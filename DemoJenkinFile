@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+	stages {
+		stage ("build"){
+            steps {
+                echo 'building the application'
+            }
+        }
+        stage ("test"){
+            steps {
+                echo 'testing the application'
+            }
+        }
+        stage ("deploy"){
+            steps {
+                echo 'depoying the application'
+            }
+        }
+    }
+    post {
+		
+        success {
+            echo 'All tasks completed successfully.'
+        }
+		failure {
+			echo 'One or more stages have failed.'
+		}
+		always {
+			echo 'job run successfully.'					
+		}
+    }
+}
