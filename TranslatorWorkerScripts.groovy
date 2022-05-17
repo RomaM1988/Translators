@@ -37,7 +37,7 @@ def StageAndDeploy(String buildDir, String stageDir)
 		def deployFlag="${params.Deploy}"
 		
 		sh "chmod +x ./stageAndDeployTranslatorWorkerUnit.sh "
-		sh "./stageAndDeployTranslatorWorkerUnit.sh ${unitFullPath} ${stagePath} 'Artifacts/' ${deployFlag}"		
+		sh "./stageAndDeployTranslatorWorkerUnit.sh ${unitFullPath} ${stagePath} 'Artifacts' ${deployFlag}"		
 	}
 }
 
