@@ -3,8 +3,8 @@
 if [ $# -ne 4 ]
 then
         echo "stage_and_deploy_artifacts.sh called with incorrect number of arguments."
-        echo "stage_and_deploy_artifacts.sh <unitPaht> <StageBaseDir> <CustomerArtifactDir>> <DeployFlag>"
-        echo "For example; stage_and_deploy_artifacts.sh /plm/pnnas/ppic/users/<unit_name> /plm/pnnas/ppic/users/<stage_dir> <Artifacts/TRX22> true/false"
+        echo "stage_and_deploy_artifacts.sh <unitPaht> <StageBaseDir> <CustomerArtifactDir> <DeployFlag>"
+        echo "For example; stage_and_deploy_artifacts.sh /plm/pnnas/ppic/users/<unit_name> /plm/pnnas/ppic/users/<stage_dir> <Artifacts> true/false"
         exit 1
 fi
 
@@ -33,12 +33,17 @@ rm -rf ${STAGE_DIR}/debug || { exit 1;}
 rm -rf ${STAGE_DIR}/license || { exit 1;}
 rm -rf ${STAGE_DIR}/dockerfile || { exit 1;}
 
-CONFIG_FILE=${STAGE_DIR}/pvtrans/tessUG.config
-chmod 0755 ${CONFIG_FILE} || { exit 1;}
+CONFIG_FILE_MULTICAD=${STAGE_DIR}/pvtrans/tessUG_multicad.config
+chmod 0755 ${CONFIG_FILE_MULTICAD} || { exit 1;}
 
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv1 ${STAGE_DIR}/run_ugtopv || { exit 1;}
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG1.config ${CONFIG_FILE} || { exit 1;}
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/NXJT_Translator_README1.txt ${STAGE_BASE_DIR}/ || { exit 1;}
+CONFIG_FILE_VIS=${STAGE_DIR}/pvtrans/tessUG_vis.config
+chmod 0755 ${CONFIG_FILE_VIS} || { exit 1;}
+
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv_multicad ${STAGE_DIR}/run_ugtopv_multicad || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv_vis ${STAGE_DIR}/run_ugtopv_vis || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG_multicad.config ${CONFIG_FILE_MULTICAD} || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG_vis.config ${CONFIG_FILE_VIS} || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/NXJT_Translator_README.txt ${STAGE_BASE_DIR}/ || { exit 1;}
 
 if [ ${EXECUTE_DEPLOY} == "true" ]
 then
