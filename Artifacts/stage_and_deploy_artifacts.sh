@@ -36,9 +36,9 @@ rm -rf ${STAGE_DIR}/dockerfile || { exit 1;}
 CONFIG_FILE=${STAGE_DIR}/pvtrans/tessUG.config
 chmod 0755 ${CONFIG_FILE} || { exit 1;}
 
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv ${STAGE_DIR}/run_ugtopv || { exit 1;}
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG.config ${CONFIG_FILE} || { exit 1;}
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/NXJT_Translator_README.txt ${STAGE_BASE_DIR}/ || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv1 ${STAGE_DIR}/run_ugtopv || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG1.config ${CONFIG_FILE} || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/NXJT_Translator_README1.txt ${STAGE_BASE_DIR}/ || { exit 1;}
 
 if [ ${EXECUTE_DEPLOY} == "true" ]
 then
