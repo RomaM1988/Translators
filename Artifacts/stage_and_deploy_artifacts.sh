@@ -33,19 +33,21 @@ rm -rf ${STAGE_DIR}/debug || { exit 1;}
 rm -rf ${STAGE_DIR}/license || { exit 1;}
 rm -rf ${STAGE_DIR}/dockerfile || { exit 1;}
 
-CONFIG_FILE_MULTICAD=${STAGE_DIR}/pvtrans/tessUG_multicad.config
-CONFIG_FILE_VIS=${STAGE_DIR}/pvtrans/tessUG_vis.config
+CONFIG_FILE_MULTICAD=${STAGE_DIR}/tessUG_multicad.config
+CONFIG_FILE_VIS=${STAGE_DIR}/tessUG_vis.config
+RUN_UGTOPV_MULTICAD=${STAGE_DIR}/run_ugtopv_multicad
+RUN_UGTOPV_VIS=${STAGE_DIR}/run_ugtopv_vis
 
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv_multicad ${STAGE_DIR}/run_ugtopv_multicad || { exit 1;}
-cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv_vis ${STAGE_DIR}/run_ugtopv_vis || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv_multicad ${RUN_UGTOPV_MULTICAD} || { exit 1;}
+cp -f ${CUSTOMER_ARTIFACTS_DIR}/run_ugtopv_vis ${RUN_UGTOPV_VIS} || { exit 1;}
 cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG_multicad.config ${CONFIG_FILE_MULTICAD} || { exit 1;}
 cp -f ${CUSTOMER_ARTIFACTS_DIR}/tessUG_vis.config ${CONFIG_FILE_VIS} || { exit 1;}
 cp -f ${CUSTOMER_ARTIFACTS_DIR}/NXJT_Translator_README.txt ${STAGE_BASE_DIR}/ || { exit 1;}
 
 chmod 0755 ${CONFIG_FILE_MULTICAD} || { exit 1;}
 chmod 0755 ${CONFIG_FILE_VIS} || { exit 1;}
-chmod 0755 ${STAGE_DIR}/run_ugtopv_multicad || { exit 1;}
-chmod 0755 ${STAGE_DIR}/run_ugtopv_vis || { exit 1;}
+chmod 0755 ${RUN_UGTOPV_MULTICAD} || { exit 1;}
+chmod 0755 ${RUN_UGTOPV_VIS} || { exit 1;}
 
 if [ ${EXECUTE_DEPLOY} == "true" ]
 then
